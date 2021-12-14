@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+	
+	<!--CSS Styles -->
+    <link rel="stylesheet" href="project_styles.css" />
+
+    <!-- Animate CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>STUDENT SURVEY APP</title>
+  </head>
+  
+  <body>
+	<nav>
+		<h1>STUDENT SURVEY APP</h1>
+		<ul class="navigation">
+				<li><a href="portfolio.html" class="nav-link">Back to Home Page</a></li>
+		</ul>
+		<button class="burger-menu" id="burger-menu">
+			<ion-icon class="bars" name="menu-outline"></ion-icon>
+		</button>
+	</nav>
+	<div class="project-wrapper">
+	<h2 class="project-title">Student Survey App Project</h2>
+	</div>
+	<p class="project-header"><strong>Project Brief</strong></p>
+	<p class="project-pdetails">
+	A client wants your team to develop a prototype for a mobile application for the purposes of gathering responses to surveys. The client wants the application to be adaptable to a range of contexts such as customer satisfaction, student feedback, health and well-being questionnaires and so on. For the first phase of the app design, the client would like your team to develop the app’s Graphical User Interface (GUI) and to demonstrate that the gathered data can be stored and retrieved outside of a single instance of the program session. The client and your team have agreed on 3 weeks to produce the prototype.
+	</p>
+	<p class="project-header"><strong>Feasibility Study</strong></p>
+	<p class="project-pdetails">
+	To make the app, the software we used was the MIT app inventor, which we used to make the graphical user interface aswell as the blocks to code it, we also used google docs to store the data from the responses of the users and google script to get MIT app inventor and google docs to communicate together. In our group we had a UX/UI Designer, a researcher and 2 programmers so we had the skills and knowledge to do this project and were fully capable of finishing this design.
+	</p>
+	<p class="project-header"><strong>Alternatives</strong></p>
+	<p class="project-pdetails">
+	Although there are many alternatives that perform the same task as our app such as survey monkey which has more features and functionality for instance you can create a custom logo, colour scheme, and survey URL in their “premium business plan” however the major drawback of these alternatives is that they are charging upwards of £75/month to use.
+	</p>
+	<p class="project-header"><strong>Description of app functionality</strong></p>
+	<p class="project-pdetails">
+	The app is designed to take a user’s response to a survey and store that response in a google sheet, it works by the user pressing one of 5 buttons (red, yellow, orange, cyan and turquoise) red being least and turquoise being most, for example if the user was asked “how much has COVID 19 effected your learning?” and the user pressed the orange button meaning it has moderately affected the users learning then it would edit the sheet and put in a number 3 representing the 3rd option
+	</p>
+	<p class="project-header"><strong>Limitations</strong></p>
+	<p class="project-pdetails">
+	Currently the limitations of the app are that it does not offer some of the premium features that other alternatives offer such as unlimited questions as at the moment we have designed it to have a limit of 5 questions and it is also only available for android due to its file type being .apk however we could implement support for iOS and other operating systems in the future. To abide by the data protection, act and GDPR we will prompt the user, asking if they are okay for their data to be stored and used then we will delete it after it has been used. We will also implement a human verification to prevent answers by bots and we can prevent users from taking the survey more than once to get the most accurate results possible and avoid dishonest answers. The google sheet will not be findable/searchable as the google sheet will only be available to view to the client who is conducting the survey
+	</p>
+	<p class="project-header"><strong>Development ideas for future stages:</strong></p>
+	<p class="project-pdetails">- Make the spreadsheet viewable by the clients</p>
+	<p class="project-pdetails">- Questions are able to be changed by clients in app without third party app or use of the sheet itself </p>
+	<p class="project-pdetails">- Add support for IOS</p>
+	<p class="project-pdetails">- Make a library for potential quizzes people can do just like the student health survey</p>
+	<p class="project-pdetails">- Be able to add as many questions as you want </p>
+	<p class="project-pdetails">- Present the data collected in the sheet in multiple different ways such as a percentage for each choice</p>
+	<p class="project-pdetails">- Have a text box to further answers by the user</p>
+	<p class="project-header"><strong>Positives of development:</strong></p>
+	<p class="project-pdetails">- The creation of the UI went well without problems</p> 
+	<p class="project-pdetails">- The blocks for the app went well and the code for the sheet went well also</p>
+	<p class="project-pdetails">- The spreadsheet design with the questions and the IDs for each user was quite simple, making the results easily readable</p>
+	<p class="project-header"><strong>Negatives of development:</strong></p>
+	<p class="project-pdetails">- Making the questions fit on the app UI was a problems because using a button for where the questions would go would cause an error
+	message to show up due to not fitting, to fix this we used a label for where the questions are presented.</p>
+	<p class="project-pdetails">- Another problem was when getting the app to work the results wouldn’t show up but a simple fix to this was entering a 0 in the ResultID on the sheet</p>
+	<p class="project-pdetails">- In our original plan there were questions all presented at once with 5 separate buttons for each answer but by making the questions change on a label meant that we could reduce clutter of the app and only use 5 buttons.</p>
+	<p class="project-pdetails">To create this project we had to learn how to use MIT app inventor and how to edit script on google sheets. I learnt that working in a team means you have to equally divide the tasks at hand to get them done most efficiently, this means that we all had our tasks such as me and Mathew made the script and blockwork for the app, Ben designed the UI and Aiden did the research for the app, separating the tasks helped us work as a strong team to create the project. Through planning  and organisation we need to create a plan of what we are creating and write up the tasks that are required. We wrote a list of things that we had to complete however left the project fairly broad to leave room to change rather than setting the plan in stone. I would re-use the code used on app inventor and sheets. The skills I will continue to use are the teamwork skills and the new ability to create apps through app inventor if I ever need to use this for projects to come.</p>
+	<div class="project-wrapper">
+	<h3 class="project-title">Screenshots of Completed Steps at Each Working Stage:</h3>
+	</div>
+	<img class="images" src="app.png" alt="survey app" width="250" height="400">
+	<img class="images" src="blocks.png" alt="code blocks">
+	<img class="images" src="sourcecode.png" alt="source code">
+  </body>
+ </html>
+  
