@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
+
+/* Variables */
+:root {
+  --font-family: "Roboto", sans-serf;
+  --normal-font: 400;
+  --bold-font: 700;
+  --bolder-font: 900;
+  --bg-color: #1d3647;
+  --primary-color: #add8e6;
+  --secondary-color: red;
+  --primary-shadow: #1d3647 ;
+  --secondary-shadow: #add8e6;
+  --bottom-margin: 0.5rem;
+  --bottom-margin-2: 1rem;
+  --line-height: 1.7rem;
+  --transition: 0.3s;
+}
+/* Variables end */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* CSS Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #add8e6 ;
+}
+ nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3.5rem;
+  background-color: var(--bg-color);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+nav h1 {
+  color: var(--primary-color);
+}
+
+nav a {
+  color: var(--secondary-color);
+  transition: var(--transition);
+}
+nav a:hover {
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+nav ul {
+  display: flex;
+  gap: 1.9rem;
+}
+
+nav ul li {
+  font-weight: var(--bold-font);
+}
+.burger-menu {
+  color: var(--primary-color);
+  font-size: 2rem;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+}
+.project-title {
+	text-align: center;
+	padding: 40px;
+	color: #add8e6 ;
+}
+.project-header {
+	text-align: left;
+	color: #000000;
+	padding: 10px;
+}
+.project-wrapper {
+	padding-left: 10px;
+	padding-right: -230px;
+	box-shadow: 0 3px 10px var(--primary-shadow);
+	border-radius: 11px;
+	margin: 30px;
+	background-color: #1d3647;
+}
+.project-pdetails {
+	padding: 20px;
+	color: #000000;
+}
+.images {
+	margin: 30px;
+	border-radius: 15px;
+	box-shadow: 0 3px 10px var(--primary-shadow);
+	max-height: auto;
+	max-width: 100%;
+}

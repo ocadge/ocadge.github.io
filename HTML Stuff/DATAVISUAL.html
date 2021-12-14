@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+	
+	<!--CSS Styles -->
+    <link rel="stylesheet" href="project_styles.css" />
+
+    <!-- Animate CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>DATA VISUALISATION IN PANDAS</title>
+  </head>
+  
+  <body>
+	<nav>
+		<h1>DATA VISUALISATION IN PANDAS</h1>
+		<ul class="navigation">
+				<li><a href="portfolio.html" class="nav-link">Back to Home Page</a></li>
+		</ul>
+		<button class="burger-menu" id="burger-menu">
+			<ion-icon class="bars" name="menu-outline"></ion-icon>
+		</button>
+	</nav>
+	<div class="project-wrapper">
+	<h2 class="project-title">Visualising Data on a Graph</h2>
+	</div>
+	<p class="project-header"><strong>Creating a Data Frame</strong></p>
+	<p class="project-pdetails">
+	This is the DataFrame which we will use throughout all the visualizations. We are going to use the .plot() function of DataFrame and series to plot graphs. It has randomly generated values so each time we run this section it will generate a new DataFrame for the example data.
+	</p>
+	<img class="images" src="dataframe.PNG" alt="DataFrame" width=400 height=350>
+	<p class="project-header"><strong>Plotting to a Line Graph</strong></p>
+	<p class="project-pdetails">
+	We can create a Line plot with the DataFrame.plot() function. This is a simple line graph but we can add more to it by specifying its features. We can plot graphs between two columns also
+	</p>
+	<img class="images" src="line-graph.png" alt="LineGraph">
+	<img class="images" src="line-graph2.png" alt="LineGraph2">
+	<p class="project-pdetails">
+	In this example, we have plotted a line graph between two columns only by providing the arguments for the x and y-axis. We can also generate subplots for individual columns. Let’s see an example:
+	<img class="images" src="subplots.png" alt="SubPlots">
+	<p class="project-header"><strong>Plotting Bar Graphs</strong></p>
+	<p class="project-pdetails">
+	Now, we will create bar plots for the same dataframe. Bar plots can be created with DataFrame.plot.bar() function. We can see that the bar plot is generated for all the columns. Let’s specify some features in the plot. We can stack the bars and set them horizontally as seen in these examples:
+	</p>
+	</p>
+	<img class="images" src="bar-graph.png" alt="BarGraph">
+	<img class="images" src="bar-graph2.png" alt="BarGraph2">
+	<img class="images" src="bar-graph3.png" alt="BarGraph3">
+	<p class="project-header"><strong>Plotting a Histogram</strong></p>
+	<p class="project-pdetails">
+	We will now generate a histogram for the DataFrame we can do this by using the DataFrame.plot.hist() function. We will also add some features and create a histogram for each individual column.
+	</p>
+	<img class="images" src="histogram.png" alt="Histogram">
+	<img class="images" src="histogram2.png" alt="Histogram2">
+	<img class="images" src="histogram3.png" alt="Histogram3">
+	<p class="project-header"><strong>Area Plotting</strong></p>
+	<p class="project-pdetails">
+	Now, we will create a area plot. Area plot can be created with DataFrame.plot.area() function, this is the area plot for dataframe df. This plot is stacked automatically in Pandas. Now, we will create unstacked area plot.
+	</p>
+	<img class="images" src="area-plot.png" alt="AreaPlot">
+	<img class="images" src="area-plot2.png" alt="AreaPlot2">
+	<p class="project-header"><strong>Plotting a Pie Chart</strong></p>
+	<p class="project-pdetails">
+	A Pie plot can be created with DataFrame.plot.pie() function or Series.plot.pie(). We will be using our DataFrame but it must display all columns as seperate Pie Charts.	
+	</p>
+	<img class="images" src="pie-charts.png" alt="PieChart">
+	<p class="project-header"><strong>Reading/Writing to CSV File</strong></p>
+	<p class="project-pdetails">
+	We can create DataFrames using data from our CSV File, with this data we can again use it to create all the graphs shown above, this is how we use pandas to read from csv files. 
+	</p>
+	<img class="images" src="csv-dataframe.png" alt="CSV-DataFrame">
+  </body>
+ </html>
