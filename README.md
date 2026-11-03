@@ -24,12 +24,12 @@ Then open http://localhost:5173 (portfolio) or http://localhost:5173/explorer/ (
 | `npm run format`    | Formats every file with Prettier (`format:check` only checks) |
 | `npm test`          | Unit tests (Vitest)                                           |
 
-CI runs all the checks, plus `npm audit` and a gitleaks secret scan, on every pull request. GitHub's CodeQL default setup (turned on in the repo settings) scans the code on every pull request and weekly.
+Every push to `main` builds the site and publishes `dist/` to GitHub Pages. CI runs all the checks, plus `npm audit` and a gitleaks secret scan, on every pull request. GitHub's CodeQL default setup (turned on in the repo settings) scans the code on every pull request and weekly.
 
 ## Layout
 
 ```text
-.github/       CI, Dependabot, CODEOWNERS
+.github/       CI, deploy, Dependabot, CODEOWNERS
 explorer/      HTML page for the explorer demo
 src/           React code (src/explorer is the explorer demo)
 ```
