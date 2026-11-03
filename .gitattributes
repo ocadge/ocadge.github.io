@@ -1,0 +1,4 @@
+# Keep LF line endings in the repo so Prettier checks match on Windows and in CI.
+* text=auto eol=lf
+*.png binary
+*.PNG binary

@@ -1,0 +1,71 @@
+/* Colours from the build brief. Phase 1 moves these into tokens.css with a light theme. */
+:root {
+  --bg: #0a0e14;
+  --panel: #0f151e;
+  --border: #1f2a38;
+  --text: #a9b4c4;
+  --heading: #f1f5fa;
+  --accent: #3ddbd9;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  color: var(--heading);
+}
+h1 {
+  font-family: ui-monospace, Consolas, monospace;
+  color: var(--accent);
+}
+a {
+  color: var(--accent);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
