@@ -1,24 +1,12 @@
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { data, trendRows, trendSummary, type Sex } from './data.ts'
-import { useDarkMode } from './useDarkMode.ts'
+import { token, useDarkMode } from './useDarkMode.ts'
 
 // Okabe-Ito palette: stays distinguishable for the common types of colour blindness.
 // The light-theme shades are darker so every line keeps at least 3:1 contrast on white.
-const THEMES = {
-  dark: {
-    grid: '#1f2a38',
-    axis: '#8b97a9',
-    eu: '#f1f5fa',
-    panel: '#0f151e',
-    series: ['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7'],
-  },
-  light: {
-    grid: '#d3dbe6',
-    axis: '#536074',
-    eu: '#0a0e14',
-    panel: '#ffffff',
-    series: ['#B26B00', '#0072B2', '#007A5C', '#8A7400', '#1F4E99', '#C2410C', '#A3477F'],
-  },
+const SERIES = {
+  dark: ['#E69F00', '#56B4E9', '#009E73', '#F0E442', '#0072B2', '#D55E00', '#CC79A7'],
+  light: ['#B26B00', '#0072B2', '#007A5C', '#8A7400', '#1F4E99', '#C2410C', '#A3477F'],
 }
 
 // Props are the inputs a component gets from its parent, like function arguments.
@@ -29,7 +17,15 @@ interface Props {
 }
 
 export default function TrendChart({ sex, countries }: Props) {
-  const theme = useDarkMode() ? THEMES.dark : THEMES.light
+  // Everything except the series colours comes from the site's design tokens, so it never drifts.
+  const dark = useDarkMode()
+  const theme = {
+    grid: token('--border'),
+    axis: token('--muted'),
+    eu: token('--heading'),
+    panel: token('--panel'),
+    series: dark ? SERIES.dark : SERIES.light,
+  }
   const lines = ['EU27_2020', ...countries]
   const rows = trendRows(data, sex, lines)
 
