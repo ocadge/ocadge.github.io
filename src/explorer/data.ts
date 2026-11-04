@@ -24,3 +24,15 @@ export function trendRows(d: LifeData, sex: Sex, countries: string[]): TrendRow[
     return row
   })
 }
+
+const SEX_WORDS: Record<Sex, string> = { T: 'Total', M: 'Male', F: 'Female' }
+
+// A text version of the trend chart for screen readers: what it shows and each line's latest value.
+export function trendSummary(d: LifeData, sex: Sex, countries: string[]): string {
+  const latest = countries.map((code) => {
+    const year = [...d.years].reverse().find((y) => d.values[sex][code]?.[y] !== undefined)
+    const name = d.countries[code] ?? code
+    return year ? `${name} ${d.values[sex][code]?.[year]} years (${year})` : `${name} no data`
+  })
+  return `${SEX_WORDS[sex]} life expectancy at birth, ${d.years[0]} to ${d.years.at(-1)}. Latest values: ${latest.join(', ')}.`
+}

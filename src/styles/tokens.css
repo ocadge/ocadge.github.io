@@ -1,0 +1,51 @@
+/* Design tokens: every colour and font the site uses. Components only ever use these variables,
+   so the light theme below is the only place light colours need defining. */
+:root {
+  color-scheme: dark;
+
+  --bg: #0a0e14;
+  --panel: #0f151e;
+  --panel-sunken: #0c121a;
+  --border: #1f2a38;
+  --border-strong: #2e3d52;
+  --text: #a9b4c4;
+  --text-strong: #d8e0ec;
+  --heading: #f1f5fa;
+  --muted: #8b97a9;
+  /* Burnt Ember, from the Fighter class in my Roblox game, lightened to read on near-black. */
+  --accent: #e8833a;
+  --on-accent: #04161a;
+
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-pixel: 'Silkscreen', ui-monospace, Consolas, monospace;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --page-width: 1120px;
+  --gutter: 32px;
+  /* Near-square corners echo the voxel art style. */
+  --radius: 2px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    --bg: #f6f8fb;
+    --panel: #ffffff;
+    --panel-sunken: #eef2f7;
+    --border: #d3dbe6;
+    --border-strong: #b4c0d0;
+    --text: #3a4657;
+    --text-strong: #1b2430;
+    --heading: #0a0e14;
+    --muted: #536074;
+    --accent: #a84e0b;
+    --on-accent: #ffffff;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 16px;
+  }
+}

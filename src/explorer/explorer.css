@@ -1,0 +1,48 @@
+.explorer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 64px;
+  color: var(--text);
+}
+.explorer h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin: 16px 0;
+}
+.explorer a {
+  color: var(--accent);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 16px 0;
+}
+.panel h2 {
+  margin-bottom: 8px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.controls button {
+  min-height: 44px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.controls button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
