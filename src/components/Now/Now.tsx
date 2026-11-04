@@ -1,7 +1,8 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { bootcampTopics, nowItems, siteSteps, type NowItem } from '../../content/now.ts'
 import { data } from '../../explorer/data.ts'
-import { linePoints, nextTab } from './helpers.ts'
+import { nextTab } from '../../lib/tabs.ts'
+import { linePoints } from './helpers.ts'
 import styles from './Now.module.css'
 
 export default function Now() {
