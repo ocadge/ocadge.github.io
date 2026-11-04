@@ -31,7 +31,8 @@ Every push to `main` builds the site and publishes `dist/` to GitHub Pages. CI r
 ```text
 .github/       CI, deploy, Dependabot, CODEOWNERS
 explorer/      HTML page for the explorer demo
-src/           React code (src/explorer is the explorer demo)
+public/fonts/  self-hosted Bricolage Grotesque, Silkscreen and IBM Plex Sans, with their licences
+src/           React code: components/ (one folder each, with a CSS Module), styles/ (tokens, fonts, global), explorer/
 ```
 
 ## Adding a project

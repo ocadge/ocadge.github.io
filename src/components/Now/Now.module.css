@@ -1,0 +1,148 @@
+.now {
+  flex: 1 1 420px;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 4px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+.heading {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tab {
+  min-height: 44px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  cursor: pointer;
+}
+.tab:hover {
+  color: var(--text-strong);
+}
+.tab[aria-selected='true'] {
+  color: var(--text-strong);
+  border-bottom-color: var(--accent);
+}
+.panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-pixel);
+  font-size: 15px;
+  color: var(--accent);
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+}
+.summary {
+  color: var(--text);
+}
+.link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: auto;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--accent);
+}
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.steps,
+.topics {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text);
+}
+.steps li {
+  display: flex;
+  gap: 10px;
+  padding: 3px 0;
+}
+.check {
+  color: var(--muted);
+}
+.done .check {
+  color: var(--accent);
+}
+.topics li::before {
+  content: '› ';
+  color: var(--accent);
+}
+.topics li {
+  padding: 2px 0;
+}
+.chart {
+  margin: 4px 0 0;
+}
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.marker {
+  fill: var(--bg);
+  stroke: var(--text-strong);
+  stroke-width: 2;
+}
+.caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--muted);
+}

@@ -1,0 +1,52 @@
+.timeline {
+  margin: 0 0 0 4px;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--border-strong);
+}
+.entry {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+  padding: 0 0 40px 32px;
+}
+.entry:last-child {
+  padding-bottom: 0;
+}
+.marker {
+  position: absolute;
+  left: -5px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.current {
+  background: var(--accent);
+}
+.dates {
+  flex: 1 1 160px;
+  max-width: 200px;
+  padding-top: 3px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--muted);
+}
+.detail {
+  flex: 3 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+}
+.summary {
+  max-width: 620px;
+  color: var(--text);
+}

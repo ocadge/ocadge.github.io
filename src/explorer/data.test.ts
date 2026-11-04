@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { data, trendRows, type LifeData } from './data.ts'
+import { data, trendRows, trendSummary, type LifeData } from './data.ts'
 
 const sample: LifeData = {
   source: 'test',
@@ -21,6 +21,20 @@ describe('trendRows', () => {
       { year: '2019', DE: undefined },
       { year: '2020', DE: undefined },
     ])
+  })
+})
+
+describe('trendSummary', () => {
+  it('names each line with its latest value, skipping missing years', () => {
+    expect(trendSummary(sample, 'T', ['DE', 'FR'])).toBe(
+      'Total life expectancy at birth, 2019 to 2020. Latest values: Germany 81.1 years (2020), France 82.9 years (2019).',
+    )
+  })
+
+  it('says when a country has no data', () => {
+    expect(trendSummary(sample, 'M', ['DE'])).toBe(
+      'Male life expectancy at birth, 2019 to 2020. Latest values: Germany no data.',
+    )
   })
 })
 
