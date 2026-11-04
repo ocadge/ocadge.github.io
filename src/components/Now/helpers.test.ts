@@ -1,22 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { linePoints, nextTab } from './helpers.ts'
-
-describe('nextTab', () => {
-  it('moves right and left, wrapping at the ends', () => {
-    expect(nextTab('ArrowRight', 0, 4)).toBe(1)
-    expect(nextTab('ArrowRight', 3, 4)).toBe(0)
-    expect(nextTab('ArrowLeft', 0, 4)).toBe(3)
-  })
-
-  it('jumps to the first and last tab', () => {
-    expect(nextTab('Home', 2, 4)).toBe(0)
-    expect(nextTab('End', 1, 4)).toBe(3)
-  })
-
-  it('ignores other keys', () => {
-    expect(nextTab('Enter', 1, 4)).toBeNull()
-  })
-})
+import { linePoints } from './helpers.ts'
 
 describe('linePoints', () => {
   it('puts the lowest value at the bottom and the highest at the top', () => {

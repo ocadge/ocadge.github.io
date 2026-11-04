@@ -37,4 +37,8 @@ src/           React code: components/ (one folder each, with a CSS Module), sty
 
 ## Adding a project
 
-Coming in Phase 2, when projects move into typed data files.
+1. Open `src/content/projects.ts` and copy an existing entry in the `projects` list.
+2. Fill in every field. `group` decides which tab it appears under, and `view` says how a visitor sees it: `live` needs a `links.live`, `screenshots` needs `images`.
+3. For screenshots, save them as `.webp` in `public/images/projects/` and give each one alt text and its real width and height.
+4. Set `codePublic: false` for anything that mustn't be shared (all university work). Those can't have a `links.code`.
+5. Run `npm test`. The tests in `src/content/projects.test.ts` fail if a rule is broken, and CI won't let the change merge until they pass.
