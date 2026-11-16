@@ -1,6 +1,6 @@
 # ocadge.github.io
 
-Ben Wilkinson's portfolio site, built with Vite, React and TypeScript. It's being rebuilt in phases; this is Phase 0 (foundations).
+My portfolio site, built with Vite, React and TypeScript, and published at https://ocadge.github.io.
 
 ## Run it locally
 
@@ -23,17 +23,37 @@ Then open http://localhost:5173 (portfolio) or http://localhost:5173/explorer/ (
 | `npm run lint`      | ESLint, including the rules that ban raw HTML and `eval`      |
 | `npm run format`    | Formats every file with Prettier (`format:check` only checks) |
 | `npm test`          | Unit tests (Vitest)                                           |
+| `npm run e2e`       | End-to-end and axe accessibility tests against the built site |
 
-Every push to `main` builds the site and publishes `dist/` to GitHub Pages. CI runs all the checks, plus `npm audit` and a gitleaks secret scan, on every pull request. GitHub's CodeQL default setup (turned on in the repo settings) scans the code on every pull request and weekly.
+The end-to-end tests need a build first (`npm run build`) and a one-time browser download (`npx playwright install chromium`). They start `npm run preview` themselves.
+
+Every push to `main` builds the site and publishes `dist/` to GitHub Pages. CI runs all the checks, including the end-to-end tests, plus `npm audit` and a gitleaks secret scan, on every pull request. Lighthouse scores for the live site are in `docs/lighthouse.md`. GitHub's CodeQL default setup (turned on in the repo settings) scans the code on every pull request and weekly.
 
 ## Layout
 
 ```text
 .github/       CI, deploy, Dependabot, CODEOWNERS
+docs/          Lighthouse results (not published)
+e2e/           Playwright end-to-end and accessibility tests
 explorer/      HTML page for the explorer demo
-public/fonts/  self-hosted Bricolage Grotesque, Silkscreen and IBM Plex Sans, with their licences
-src/           React code: components/ (one folder each, with a CSS Module), styles/ (tokens, fonts, global), explorer/
+404.html       the page GitHub Pages shows for unknown addresses
+public/        files served as they are: fonts (with their licences), images, cv.pdf, robots.txt, sitemap.xml, security.txt
+src/           React code: components/ (one folder each, with a CSS Module), content/, lib/, styles/, explorer/
 ```
+
+The security policy (CSP) is added to every built page by a small plugin in `vite.config.ts`. It isn't used by `npm run dev`, because hot reload needs inline scripts, so check anything that loads from a new place with `npm run build` and `npm run e2e`.
+
+## Changing the content
+
+All the words on the site live in `src/content/`, so most updates don't touch a component:
+
+| File          | What it holds                                                 |
+| ------------- | ------------------------------------------------------------- |
+| `projects.ts` | Project cards (see below)                                     |
+| `now.ts`      | The "Right now" panel in the hero; update it as things change |
+| `cv.ts`       | About, skills and the experience timeline                     |
+
+To replace the CV, export the new PDF without personal details (no phone, email or town) and save it over `public/cv.pdf`.
 
 ## Adding a project
 

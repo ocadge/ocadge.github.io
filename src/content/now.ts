@@ -43,7 +43,7 @@ export const siteSteps = [
   { label: 'Foundations and checks', done: true },
   { label: 'Design and layout', done: true },
   { label: 'Content and projects', done: true },
-  { label: 'Contact and launch', done: false },
+  { label: 'Contact and launch', done: true },
 ]
 
 export const bootcampTopics = [
