@@ -1,6 +1,7 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { bootcampTopics, nowItems, siteSteps, type NowItem } from '../../content/now.ts'
 import { data } from '../../explorer/data.ts'
+import { safeLink } from '../../lib/safeLink.ts'
 import { nextTab } from '../../lib/tabs.ts'
 import { linePoints } from './helpers.ts'
 import styles from './Now.module.css'
@@ -20,6 +21,7 @@ export default function Now() {
   }
 
   if (!item) return null
+  const link = item.link ? safeLink(item.link.href) : null
 
   return (
     <div className={styles.now}>
@@ -61,12 +63,8 @@ export default function Now() {
         <h3 className={styles.title}>{item.title}</h3>
         <p className={styles.summary}>{item.summary}</p>
         <Preview item={item} />
-        {item.link && (
-          <a
-            href={item.link.href}
-            className={styles.link}
-            {...(item.link.href.startsWith('https:') ? { rel: 'noopener noreferrer' } : {})}
-          >
+        {link && item.link && (
+          <a {...link} className={styles.link}>
             {item.link.label} →
           </a>
         )}

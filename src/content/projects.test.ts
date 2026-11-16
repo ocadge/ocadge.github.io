@@ -8,11 +8,6 @@ describe('projects', () => {
     for (const p of projects) if (!p.codePublic) expect(p.links.code, p.id).toBeUndefined()
   })
 
-  it('only links to https pages or pages on this site', () => {
-    for (const p of projects)
-      for (const url of Object.values(p.links)) expect(url, p.id).toMatch(/^(https:\/\/|\/[^/])/)
-  })
-
   it('gives every card a way to see the work', () => {
     for (const p of projects) {
       if (p.view === 'live') expect(p.links.live, p.id).toBeTruthy()

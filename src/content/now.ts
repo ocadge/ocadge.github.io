@@ -41,8 +41,8 @@ export const nowItems: NowItem[] = [
 
 export const siteSteps = [
   { label: 'Foundations and checks', done: true },
-  { label: 'Design and layout', done: false },
-  { label: 'Content and projects', done: false },
+  { label: 'Design and layout', done: true },
+  { label: 'Content and projects', done: true },
   { label: 'Contact and launch', done: false },
 ]
 

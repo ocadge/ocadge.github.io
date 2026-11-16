@@ -1,5 +1,6 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { groups, projects, type Project } from '../../content/projects.ts'
+import { safeLink } from '../../lib/safeLink.ts'
 import { nextTab } from '../../lib/tabs.ts'
 import Section from '../Section/Section.tsx'
 import styles from './Projects.module.css'
@@ -60,6 +61,8 @@ export default function Projects() {
 
 function Card({ project: p }: { project: Project }) {
   const [cover, ...more] = p.images ?? []
+  const live = p.links.live ? safeLink(p.links.live) : null
+  const code = p.links.code ? safeLink(p.links.code) : null
   return (
     <article className={styles.card}>
       {cover && (
@@ -103,12 +106,8 @@ function Card({ project: p }: { project: Project }) {
         </details>
 
         <div className={styles.links}>
-          {p.links.live && <a href={p.links.live}>Open demo →</a>}
-          {p.links.code && (
-            <a href={p.links.code} rel="noopener noreferrer">
-              View code ↗
-            </a>
-          )}
+          {live && <a {...live}>Open demo →</a>}
+          {code && <a {...code}>View code ↗</a>}
           {!p.codePublic && p.group === 'university' && (
             <span className={styles.private}>Code kept private (university coursework)</span>
           )}

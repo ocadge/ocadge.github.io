@@ -1,6 +1,11 @@
 // The site version of my CV. Sources: my CVs and skills profile in the vault.
 // Left out on purpose: home address, phone number, town, and the names of the school, college,
-// university, employer and training provider. Phase 2 adds a schema check.
+// university, employer and training provider. content.test.ts checks the fields are filled in.
+//
+// Facts still missing. Each one is left off the site until I have it:
+// TODO: CV download. The web copy of my CV (no contact details or organisation names) is
+//       written; it needs compiling to a PDF before the button can link to it.
+// TODO: LinkedIn profile link.
 
 export interface Fact {
   label: string

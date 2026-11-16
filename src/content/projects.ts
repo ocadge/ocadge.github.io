@@ -49,6 +49,7 @@ export const projects: Project[] = [
     codePublic: true,
     links: { code: 'https://github.com/ocadge/health-advice-app' },
   },
+  // TODO: confirm whether I built this from a course tutorial. If so, say so on the card.
   {
     id: 'survey-app',
     title: 'Student Survey App',
