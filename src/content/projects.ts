@@ -49,7 +49,6 @@ export const projects: Project[] = [
     codePublic: true,
     links: { code: 'https://github.com/ocadge/health-advice-app' },
   },
-  // TODO: confirm whether I built this from a course tutorial. If so, say so on the card.
   {
     id: 'survey-app',
     title: 'Student Survey App',
@@ -58,7 +57,7 @@ export const projects: Project[] = [
     summary:
       'A mobile survey app made in MIT App Inventor: tap a rating from 1 to 5 and it is saved to a Google Sheet.',
     built:
-      'The app sends each rating to a small Google Apps Script web app, which writes it into the sheet and can read every response back.',
+      'Built to a brief set in my college coursework. The app sends each rating to a small Google Apps Script web app, which writes it into the sheet and can read every response back.',
     learned: 'How a mobile app talks to a web service, and how block-based logic maps onto ordinary code.',
     tags: ['MIT App Inventor', 'Google Apps Script', 'JavaScript'],
     codePublic: false,

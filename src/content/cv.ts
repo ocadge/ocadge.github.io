@@ -2,9 +2,9 @@
 // Left out on purpose: home address, phone number, town, and the names of the school, college,
 // university, employer and training provider. content.test.ts checks the fields are filled in.
 //
+// public/cv.pdf is the downloadable copy, with the same details left out.
+//
 // Facts still missing. Each one is left off the site until I have it:
-// TODO: CV download. The web copy of my CV (no contact details or organisation names) is
-//       written; it needs compiling to a PDF before the button can link to it.
 // TODO: LinkedIn profile link.
 
 export interface Fact {
