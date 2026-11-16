@@ -33,6 +33,9 @@ export default function Hero() {
             <a href="#contact" className={styles.secondary}>
               Get in touch
             </a>
+            <a href="/cv.pdf" className={styles.secondary}>
+              View CV (PDF)
+            </a>
           </div>
           <ul className={styles.meta}>
             <li>
