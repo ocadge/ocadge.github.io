@@ -20,7 +20,9 @@ export default function Contact() {
   return (
     <Section id="contact" title="Get in touch">
       {status === 'sent' ? (
-        <p role="status" className={styles.sent}>
+        // The form disappears once sent, so move focus here: keyboard users keep their place
+        // and screen readers read the thanks.
+        <p role="status" className={styles.sent} tabIndex={-1} ref={(el) => el?.focus()}>
           Thanks, your message is sent. I&apos;ll reply by email.
         </p>
       ) : (

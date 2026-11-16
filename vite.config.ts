@@ -1,8 +1,35 @@
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 
+// What the pages may load. Only added to the built site: the dev server needs inline scripts for hot reload.
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self'",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "connect-src 'self' https://formspree.io",
+  'form-action https://formspree.io',
+  "base-uri 'none'",
+  "object-src 'none'",
+].join('; ')
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'csp',
+      apply: 'build',
+      // head-prepend: a CSP meta tag only covers what comes after it in the page.
+      transformIndexHtml: () => [
+        {
+          tag: 'meta',
+          attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP },
+          injectTo: 'head-prepend',
+        },
+      ],
+    },
+  ],
   build: {
     // Two pages: the portfolio itself, and the explorer demo, so the chart library
     // only loads for people who open the explorer.

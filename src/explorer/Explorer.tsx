@@ -43,19 +43,8 @@ export default function Explorer() {
         </div>
       </div>
 
-      {/* Your turn: replace these with GenderGapChart, Heatmap and RecoveryChart components. */}
-      <div className="panel">
-        <h2>Gender gap</h2>
-        <p>To build.</p>
-      </div>
-      <div className="panel">
-        <h2>Country by year heatmap</h2>
-        <p>To build.</p>
-      </div>
-      <div className="panel">
-        <h2>2019 vs latest year</h2>
-        <p>To build.</p>
-      </div>
+      {/* Your turn: add GenderGapChart, Heatmap and RecoveryChart components here, then remove this line. */}
+      <p>Coming next: the gender gap, a country-by-year heatmap, and 2019 compared with the latest year.</p>
     </section>
   )
 }
