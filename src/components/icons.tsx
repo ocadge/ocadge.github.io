@@ -6,3 +6,12 @@ export function GitHubIcon() {
     </svg>
   )
 }
+
+// A simple "in" badge I drew for the LinkedIn link. Decorative: the link text says where it goes.
+export function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" fillRule="evenodd" aria-hidden="true">
+      <path d="M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm2 5.5v6h2v-6zm1-2.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zm2.2 2.9v6h2V9.3c0-.8.4-1.3 1.1-1.3s.9.5.9 1.3v3.2h2V8.9c0-1.6-.6-2.6-2.1-2.6-.9 0-1.6.4-2 1.1v-.9z" />
+    </svg>
+  )
+}

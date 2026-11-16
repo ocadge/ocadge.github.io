@@ -1,4 +1,4 @@
-import { GitHubIcon } from '../icons.tsx'
+import { GitHubIcon, LinkedInIcon } from '../icons.tsx'
 import Now from '../Now/Now.tsx'
 import styles from './Hero.module.css'
 
@@ -42,6 +42,16 @@ export default function Hero() {
               <a href="https://github.com/ocadge" rel="noopener noreferrer" className={styles.metaLink}>
                 <GitHubIcon />
                 github.com/ocadge
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/ben-wilkinson-4727a822a/"
+                rel="noopener noreferrer"
+                className={styles.metaLink}
+              >
+                <LinkedInIcon />
+                LinkedIn
               </a>
             </li>
             <li>North East England</li>
