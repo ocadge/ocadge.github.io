@@ -1,11 +1,8 @@
 // The site version of my CV. Sources: my CVs and skills profile in the vault.
-// Left out on purpose: home address, phone number, town, and the names of the school, college,
-// university, employer and training provider. content.test.ts checks the fields are filled in.
+// Left out on purpose: home address, phone number, email address, town and the name of my
+// school. content.test.ts checks the fields are filled in.
 //
 // public/cv.pdf is the downloadable copy, with the same details left out.
-//
-// Facts still missing. Each one is left off the site until I have it:
-// TODO: LinkedIn profile link.
 
 export interface Fact {
   label: string
@@ -28,7 +25,7 @@ export interface SkillGroup {
 export const about = {
   headline: 'Early-career developer with studio experience',
   paragraphs: [
-    'I’m an early-career developer from the North East. I spent a year as a Games Programming Intern at an independent games studio, working in a small team on a client prototype in Unreal Engine 5, then studied Computer Science at university, where I earned a Certificate of Higher Education in Computing with Commendation.',
+    'I’m an early-career developer from the North East. I spent a year as a Games Programming Intern at Tanglewood Games, an independent games studio, working in a small team on a client prototype in Unreal Engine 5, then studied Computer Science at Northumbria University, where I earned a Certificate of Higher Education in Computing with Commendation.',
     'Python is my strongest language. At university I built object-oriented desktop apps in PySide6, a REST API in PHP and data visualisation reports with pandas and seaborn. Right now I’m building this site in React and TypeScript, and I’m enrolled on an AI Essentials Bootcamp.',
   ],
   facts: [
@@ -53,7 +50,7 @@ export const timeline: TimelineEntry[] = [
   {
     dates: 'Nov 2026 – Dec 2026',
     title: 'AI Essentials Bootcamp (enrolled)',
-    place: 'Training provider',
+    place: 'Baltic Apprenticeships',
     summary:
       'A ten-day bootcamp on using generative AI tools responsibly, checking AI output and mapping workplace processes for automation.',
     current: true,
@@ -61,21 +58,21 @@ export const timeline: TimelineEntry[] = [
   {
     dates: '2023 – 2026',
     title: 'Certificate of Higher Education in Computing, Commendation',
-    place: 'University',
+    place: 'Northumbria University',
     summary:
       'Exit award from BSc (Hons) Computer Science. Modules passed include Programming, Advanced Programming, Algorithms and Data Structures, Software Architecture, Data Visualization, Data Fundamentals and AI Fundamentals.',
   },
   {
     dates: 'Jan 2022 – Jan 2023',
     title: 'Games Programming Intern',
-    place: 'Independent games studio',
+    place: 'Tanglewood Games',
     summary:
       'Worked in a small independent team prototyping a client project in Unreal Engine 5. Built features and fixed technical issues, joined daily stand-ups with the client, and used Perforce for version control and Jira for tasks.',
   },
   {
     dates: '2021 – 2023',
     title: 'T Level in Digital Production, Design and Development, Merit',
-    place: 'College',
+    place: 'Sunderland College',
     summary:
       'Included a year-long industry placement and an employer-set project: a desktop app showing weather and air quality on a map, with health advice for people with heart or lung conditions.',
   },
