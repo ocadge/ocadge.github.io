@@ -51,16 +51,6 @@ a {
   white-space: nowrap;
 }
 
-/* Placeholder text in sections that Phase 3 will fill. Links are underlined so they don't rely on colour. */
-.soon {
-  color: var(--text);
-}
-.soon a {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 /* Hidden until a keyboard user tabs to it, then jumps past the navigation. */
 .skip-link {
   position: absolute;

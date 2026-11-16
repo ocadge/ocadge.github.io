@@ -1,0 +1,60 @@
+.form {
+  display: grid;
+  gap: 16px;
+  max-width: 560px;
+}
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+.field input,
+.field textarea {
+  min-height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 400;
+  color: var(--text-strong);
+  background: var(--panel);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+}
+.field textarea {
+  resize: vertical;
+}
+.trap {
+  display: none;
+}
+.send {
+  justify-self: start;
+  min-height: 48px;
+  padding: 0 22px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--on-accent);
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.send:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+.sent,
+.failed,
+.note {
+  color: var(--text);
+}
+.failed a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.note {
+  font-size: 13px;
+  color: var(--muted);
+}
