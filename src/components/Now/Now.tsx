@@ -50,11 +50,12 @@ export default function Now() {
       </div>
 
       <div
+        key={item.id}
         id="now-panel"
         role="tabpanel"
         tabIndex={0}
         aria-labelledby={`now-tab-${item.id}`}
-        className={styles.panel}
+        className={`fade-in ${styles.panel}`}
       >
         <p className={styles.status}>
           <span className={styles.dot} aria-hidden="true" />

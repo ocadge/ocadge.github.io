@@ -3,6 +3,12 @@
   border-top: 1px solid var(--border);
   scroll-margin-top: 16px;
 }
+/* Menu links land the section heading below the sticky header, not under it. */
+@media (min-width: 768px) {
+  .section {
+    scroll-margin-top: 64px;
+  }
+}
 .inner {
   display: flex;
   flex-direction: column;
@@ -14,9 +20,19 @@
   gap: 12px;
 }
 .label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-pixel);
   font-size: 16px;
   color: var(--accent);
+}
+/* The same square marker as the hero's status line. */
+.label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
 }
 .title {
   font-family: var(--font-display);

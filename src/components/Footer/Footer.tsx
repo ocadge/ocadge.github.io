@@ -6,6 +6,9 @@ export default function Footer() {
       <div className={`container ${styles.inner}`}>
         <span>© {new Date().getFullYear()} Ben Wilkinson</span>
         <span>Built with React, TypeScript and Vite</span>
+        <a href="#top" className={styles.top}>
+          Back to top ↑
+        </a>
       </div>
     </footer>
   )

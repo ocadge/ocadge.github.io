@@ -22,6 +22,24 @@
   color: var(--text-strong);
   box-shadow: inset 0 -3px 0 var(--accent);
 }
+.tabCount {
+  margin-left: 10px;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--muted);
+}
+.tab[aria-selected='true'] .tabCount {
+  color: var(--accent);
+}
+/* Keeps the three tabs on one row on a phone. */
+@media (max-width: 480px) {
+  .tab {
+    padding: 0 12px;
+  }
+  .tabCount {
+    margin-left: 6px;
+  }
+}
 
 .grid {
   display: grid;
@@ -37,14 +55,52 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s,
+    border-color 0.15s;
 }
+/* Cards lift onto a hard ember shadow, like the buttons. Mouse only. */
+@media (hover: hover) {
+  .card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--accent);
+    border-color: var(--border-strong);
+  }
+}
+/* Screenshots, and the stand-in for cards without one, sit on a grid of square 2px dots. */
 .cover {
-  display: block;
+  display: grid;
+  place-items: center;
   width: 100%;
   height: 200px;
+  padding: 16px;
   object-fit: contain;
-  background: var(--panel-sunken);
+  background-color: var(--panel-sunken);
+  background-image: conic-gradient(at 2px 2px, transparent 75%, var(--border) 0);
+  background-size: 16px 16px;
   border-bottom: 1px solid var(--border);
+}
+.stack {
+  padding: 8px 12px;
+  background: var(--panel);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  font-family: var(--font-pixel);
+  font-size: 15px;
+  color: var(--accent);
+  text-align: center;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.number {
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  color: var(--muted);
 }
 .body {
   display: flex;

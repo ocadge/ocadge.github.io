@@ -15,10 +15,23 @@
   gap: 16px;
 }
 .name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 17px;
   color: var(--text-strong);
+}
+.name::before {
+  content: '';
+  flex: none;
+  align-self: flex-start;
+  /* Centres the square on the first line when the name wraps. */
+  margin-top: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
 }
 .list {
   display: flex;

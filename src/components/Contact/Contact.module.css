@@ -40,6 +40,17 @@
   border-radius: var(--radius);
   cursor: pointer;
 }
+/* The same lift as the hero buttons. */
+@media (hover: hover) {
+  .send:hover:enabled {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--text-strong);
+  }
+  .send:active:enabled {
+    transform: none;
+    box-shadow: none;
+  }
+}
 .send:disabled {
   cursor: progress;
   opacity: 0.7;

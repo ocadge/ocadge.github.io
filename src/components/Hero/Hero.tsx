@@ -46,7 +46,7 @@ export default function Hero() {
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/in/ben-wilkinson-4727a822a/"
+                href="https://www.linkedin.com/in/ben-wilkinson-dev/"
                 rel="noopener noreferrer"
                 className={styles.metaLink}
               >

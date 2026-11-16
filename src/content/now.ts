@@ -18,7 +18,7 @@ export const nowItems: NowItem[] = [
     status: 'building',
     title: 'This portfolio',
     summary:
-      'Rebuilt from scratch in React and TypeScript, one phase at a time, with automated checks on every change.',
+      'Rebuilt from scratch in React and TypeScript using Claude Code, working from my own written specification. Every change goes through a pull request with automated tests and security scans, and I review each one before merging it.',
     link: { href: 'https://github.com/ocadge/ocadge.github.io', label: 'See the code' },
   },
   {

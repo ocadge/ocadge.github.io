@@ -1,6 +1,18 @@
 .header {
   padding: 0 var(--gutter);
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+/* On wider screens the menu stays at the top while you scroll. Phones skip this: there the
+   menu wraps to two rows and would cover too much of the screen. */
+@media (min-width: 768px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(8px);
+  }
 }
 .inner {
   display: flex;
@@ -34,8 +46,18 @@
   font-size: 14px;
   color: var(--muted);
 }
-.link:hover {
+.link {
+  text-decoration: underline 2px transparent;
+  text-underline-offset: 6px;
+  transition:
+    color 0.15s,
+    text-decoration-color 0.15s;
+}
+/* The section being read looks the same as a hovered link. */
+.link:hover,
+.link[aria-current='true'] {
   color: var(--text-strong);
+  text-decoration-color: var(--accent);
 }
 
 @media (max-width: 480px) {

@@ -207,6 +207,6 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Recharts', 'Eurostat data'],
     codePublic: true,
     links: { live: '/explorer/', code: 'https://github.com/ocadge/ocadge.github.io/tree/main/src/explorer' },
-    note: 'Work in progress, built with AI assistance.',
+    note: 'Work in progress.',
   },
 ]
