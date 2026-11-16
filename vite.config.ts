@@ -31,10 +31,10 @@ export default defineConfig({
     },
   ],
   build: {
-    // Two pages: the portfolio itself, and the explorer demo, so the chart library
-    // only loads for people who open the explorer.
+    // The portfolio, the explorer demo (so the chart library only loads for people who
+    // open it) and the 404 page GitHub Pages shows for unknown addresses.
     rollupOptions: {
-      input: { main: 'index.html', explorer: 'explorer/index.html' },
+      input: { main: 'index.html', explorer: 'explorer/index.html', notFound: '404.html' },
     },
   },
   test: {
