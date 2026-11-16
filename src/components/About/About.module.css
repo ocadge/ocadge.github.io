@@ -34,7 +34,8 @@
   border-bottom: 0;
 }
 .fact dt {
-  color: var(--muted);
+  font-family: var(--font-pixel);
+  color: var(--accent);
 }
 .fact dd {
   margin: 0;

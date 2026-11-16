@@ -30,9 +30,27 @@ a {
   color: inherit;
   text-decoration: none;
 }
+/* Hover and focus changes ease in. The reduced-motion rule at the bottom turns this off. */
+a,
+button,
+summary,
+input,
+textarea {
+  transition:
+    color 0.15s,
+    background-color 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s;
+}
 :focus-visible {
   outline: 2px solid var(--text-strong);
   outline-offset: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 /* Centres content at the page width, with side gutters. */
@@ -49,6 +67,17 @@ a {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* Content that has just appeared, such as a tab's panel, eases in. */
+.fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
 
 /* Hidden until a keyboard user tabs to it, then jumps past the navigation. */

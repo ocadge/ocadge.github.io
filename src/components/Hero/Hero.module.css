@@ -1,7 +1,26 @@
 .hero {
+  position: relative;
   padding: clamp(48px, 8vw, 104px) var(--gutter) clamp(56px, 8vw, 96px);
 }
+/* A grid of square dots behind the hero, fading out towards the bottom. The dots are the
+   pixels where the vertical and horizontal stripes cross. Browsers without masks skip it,
+   or they would paint a solid block. */
+@supports (mask-composite: intersect) {
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--border-strong);
+    mask-image:
+      repeating-linear-gradient(to right, #000 0 2px, transparent 2px 24px),
+      repeating-linear-gradient(to bottom, #000 0 2px, transparent 2px 24px),
+      linear-gradient(to bottom, #000, transparent);
+    mask-composite: intersect;
+  }
+}
 .inner {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -74,6 +93,20 @@
 }
 .secondary:hover {
   border-color: var(--text-strong);
+}
+/* Buttons lift onto a hard, pixel-style shadow. Only where there is a mouse: on touch screens
+   a hover sticks after a tap. */
+@media (hover: hover) {
+  .primary:hover,
+  .secondary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--text-strong);
+  }
+  .primary:active,
+  .secondary:active {
+    transform: none;
+    box-shadow: none;
+  }
 }
 .meta {
   display: flex;

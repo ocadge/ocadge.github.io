@@ -41,31 +41,39 @@ export default function Projects() {
             onClick={() => setActive(i)}
           >
             {g.label}
+            {/* The panel already shows the cards, so screen readers skip the number. */}
+            <span className={styles.tabCount} aria-hidden="true">
+              {projects.filter((p) => p.group === g.id).length}
+            </span>
           </button>
         ))}
       </div>
       <div
+        // A new key per tab makes React build the panel again, so it eases in on each switch.
+        key={group.id}
         id="projects-panel"
         role="tabpanel"
         tabIndex={0}
         aria-labelledby={`projects-tab-${group.id}`}
-        className={styles.grid}
+        className={`fade-in ${styles.grid}`}
       >
-        {shown.map((p) => (
-          <Card key={p.id} project={p} />
+        {shown.map((p, i) => (
+          <Card key={p.id} project={p} number={`${pad(i + 1)}/${pad(shown.length)}`} />
         ))}
       </div>
     </Section>
   )
 }
 
-function Card({ project: p }: { project: Project }) {
+const pad = (n: number) => String(n).padStart(2, '0')
+
+function Card({ project: p, number }: { project: Project; number: string }) {
   const [cover, ...more] = p.images ?? []
   const live = p.links.live ? safeLink(p.links.live) : null
   const code = p.links.code ? safeLink(p.links.code) : null
   return (
     <article className={styles.card}>
-      {cover && (
+      {cover ? (
         <img
           className={styles.cover}
           src={cover.src}
@@ -74,9 +82,19 @@ function Card({ project: p }: { project: Project }) {
           height={cover.height}
           loading="lazy"
         />
+      ) : (
+        // Cards without a screenshot get a decorative cover naming the main tools.
+        <div className={styles.cover} aria-hidden="true">
+          <span className={styles.stack}>{p.tags.slice(0, 2).join(' / ')}</span>
+        </div>
       )}
       <div className={styles.body}>
-        <p className={styles.badge}>{VIEW_LABELS[p.view]}</p>
+        <div className={styles.top}>
+          <p className={styles.badge}>{VIEW_LABELS[p.view]}</p>
+          <span className={styles.number} aria-hidden="true">
+            {number}
+          </span>
+        </div>
         <h3 className={styles.title}>{p.title}</h3>
         <p className={styles.summary}>{p.summary}</p>
         <ul className={styles.tags} aria-label="Built with">
