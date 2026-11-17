@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { data, type Sex } from './data.ts'
+import GenderGapChart from './GenderGapChart.tsx'
 import TrendChart from './TrendChart.tsx'
 
 const SEXES: Record<Sex, string> = { T: 'Total', M: 'Male', F: 'Female' }
@@ -21,16 +22,16 @@ export default function Explorer() {
         Life expectancy at birth, {data.years[0]} to {data.years.at(-1)}. {data.source}.
       </p>
 
-      <div className="controls" role="group" aria-label="Sex">
-        {(Object.keys(SEXES) as Sex[]).map((code) => (
-          <button key={code} aria-pressed={sex === code} onClick={() => setSex(code)}>
-            {SEXES[code]}
-          </button>
-        ))}
-      </div>
-
       <div className="panel">
         <h2>Trend over time</h2>
+        {/* Inside this panel because only the trend chart can switch between sexes. */}
+        <div className="controls" role="group" aria-label="Sex">
+          {(Object.keys(SEXES) as Sex[]).map((code) => (
+            <button key={code} aria-pressed={sex === code} onClick={() => setSex(code)}>
+              {SEXES[code]}
+            </button>
+          ))}
+        </div>
         <TrendChart sex={sex} countries={selected} />
         <div className="controls" role="group" aria-label="Countries">
           {Object.entries(data.countries)
@@ -43,8 +44,14 @@ export default function Explorer() {
         </div>
       </div>
 
-      {/* Your turn: add GenderGapChart, Heatmap and RecoveryChart components here, then remove this line. */}
-      <p>Coming next: the gender gap, a country-by-year heatmap, and 2019 compared with the latest year.</p>
+      <div className="panel">
+        <h2>Gender gap, {data.years.at(-1)}</h2>
+        <p>How many more years women are expected to live than men, largest gap first.</p>
+        <GenderGapChart />
+      </div>
+
+      {/* Still to build: the heatmap and recovery charts. Remove this line once they're in. */}
+      <p>Coming next: a country-by-year heatmap, and 2019 compared with the latest year.</p>
     </section>
   )
 }
