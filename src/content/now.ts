@@ -28,7 +28,7 @@ export const nowItems: NowItem[] = [
     title: 'EU Life Expectancy Explorer',
     summary:
       'Interactive charts of Eurostat data for all 27 EU countries, growing out of my university report.',
-    link: { href: '/explorer/', label: 'Try the work in progress' },
+    link: { href: '/explorer/', label: 'Try the explorer' },
   },
   {
     id: 'bootcamp',
