@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { data, type Sex } from './data.ts'
 import GenderGapChart from './GenderGapChart.tsx'
+import Heatmap from './Heatmap.tsx'
 import TrendChart from './TrendChart.tsx'
 
 const SEXES: Record<Sex, string> = { T: 'Total', M: 'Male', F: 'Female' }
@@ -50,8 +51,17 @@ export default function Explorer() {
         <GenderGapChart />
       </div>
 
-      {/* Still to build: the heatmap and recovery charts. Remove this line once they're in. */}
-      <p>Coming next: a country-by-year heatmap, and 2019 compared with the latest year.</p>
+      <div className="panel">
+        <h2>Every country, every year</h2>
+        <p>
+          Total life expectancy, one row per country, sorted by the latest year. On a computer, hover over a
+          square to see its value.
+        </p>
+        <Heatmap />
+      </div>
+
+      {/* Still to build: the recovery chart. Remove this line once it's in. */}
+      <p>Coming next: 2019 compared with the latest year.</p>
     </section>
   )
 }

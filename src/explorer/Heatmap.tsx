@@ -24,10 +24,11 @@ export default function Heatmap() {
 
   return (
     <div role="img" aria-label={heatmapSummary(data, 'T')}>
-      {/* One column for the names, then one equal column per year, so it fits any width without scrolling. */}
+      {/* One column for the names, then one equal column per year. minmax(0, 1fr) lets a year label
+          spill over its neighbours instead of widening its own column, so it fits a phone without scrolling. */}
       <div
         className="heatmap"
-        style={{ gridTemplateColumns: `max-content repeat(${data.years.length}, 1fr)` }}
+        style={{ gridTemplateColumns: `max-content repeat(${data.years.length}, minmax(0, 1fr))` }}
       >
         <span />
         {data.years.map((year) => (
