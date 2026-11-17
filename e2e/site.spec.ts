@@ -2,7 +2,7 @@ import { test, expect, type Page } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
 // GitHub Pages serves 404.html for unknown addresses; the local preview server doesn't, so test it directly.
-const PAGES = ['/', '/explorer/', '/404.html']
+const PAGES = ['/', '/explorer/', '/bike/', '/404.html']
 
 // Collects console errors, which is also where the browser reports anything the CSP blocks.
 function watchErrors(page: Page) {
@@ -82,4 +82,26 @@ test('the form shows an error and keeps the message when the request fails', asy
   await page.getByRole('button', { name: 'Send message' }).click()
   await expect(page.getByRole('alert')).toContainText("didn't send")
   await expect(page.getByLabel('Message')).toHaveValue('Hello from the end-to-end tests.')
+})
+
+test('the bike workshop blocks a step until its parts are restocked', async ({ page }) => {
+  await page.goto('/bike/')
+  const orders = page.locator('.bike-order')
+  // Order 1 builds its wheels, which uses the last two 29-inch wheels.
+  await orders.nth(0).getByRole('button', { name: 'Do this step' }).click()
+  // Order 2 also needs 29-inch wheels, so it gets stuck at that step.
+  const second = orders.nth(1)
+  await second.getByRole('button', { name: 'Do this step' }).click()
+  await second.getByRole('button', { name: 'Do this step' }).click()
+  await expect(second).toContainText('Blocked: needs 2 × Wheel, 29 inch')
+
+  // The page load check doesn't see this state, so check accessibility here too.
+  const results = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+    .analyze()
+  expect(results.violations.map((v) => v.id)).toEqual([])
+
+  await page.getByRole('button', { name: 'Add 5 × Wheel, 29 inch' }).click()
+  await expect(second).not.toContainText('Blocked')
+  await expect(second).toContainText('Step 3 of 7: Build the wheels.')
 })

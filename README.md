@@ -11,7 +11,7 @@ npm ci --ignore-scripts
 npm run dev
 ```
 
-Then open http://localhost:5173 (portfolio) or http://localhost:5173/explorer/ (EU Life Expectancy Explorer).
+Then open http://localhost:5173 (portfolio), http://localhost:5173/explorer/ (EU Life Expectancy Explorer) or http://localhost:5173/bike/ (Bike Workshop).
 
 ## Commands
 
@@ -35,10 +35,11 @@ Every push to `main` builds the site and publishes `dist/` to GitHub Pages. CI r
 .github/       CI, deploy, Dependabot, CODEOWNERS
 docs/          Lighthouse results (not published)
 e2e/           Playwright end-to-end and accessibility tests
+bike/          HTML page for the bike workshop demo
 explorer/      HTML page for the explorer demo
 404.html       the page GitHub Pages shows for unknown addresses
 public/        files served as they are: fonts (with their licences), images, cv.pdf, robots.txt, sitemap.xml, security.txt
-src/           React code: components/ (one folder each, with a CSS Module), content/, lib/, styles/, explorer/
+src/           React code: components/ (one folder each, with a CSS Module), content/, lib/, styles/, explorer/, bike/
 ```
 
 The security policy (CSP) is added to every built page by a small plugin in `vite.config.ts`. It isn't used by `npm run dev`, because hot reload needs inline scripts, so check anything that loads from a new place with `npm run build` and `npm run e2e`.

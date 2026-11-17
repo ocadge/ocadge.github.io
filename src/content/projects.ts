@@ -178,6 +178,7 @@ export const projects: Project[] = [
     tags: ['Python', 'PySide6', 'Qt signals and slots'],
     codePublic: false,
     links: {},
+    note: 'I later rebuilt the idea from scratch as a web app: see Bike Workshop under Personal.',
   },
   {
     id: 'meal-planner',
@@ -207,5 +208,20 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Recharts', 'Eurostat data'],
     codePublic: true,
     links: { live: '/explorer/', code: 'https://github.com/ocadge/ocadge.github.io/tree/main/src/explorer' },
+  },
+  {
+    id: 'bike-workshop',
+    title: 'Bike Workshop',
+    group: 'personal',
+    view: 'live',
+    summary:
+      'A bike production line you can run in the browser: take orders, build them step by step, and keep the parts stock right.',
+    built:
+      'My own rebuild, written from scratch, of an idea from my university coursework, this time as a web app. Orders carry the customer’s choices and move through a fixed sequence of steps. A step takes all of its parts from stock or none of them, waits until missing parts are restocked, and logs every part against its order. Low stock is flagged in words as well as colour. The rules are plain TypeScript functions with tests, kept separate from the screens.',
+    learned:
+      'Managing state with a reducer, and keeping the rules in pure functions so they can be tested without a browser.',
+    tags: ['React', 'TypeScript', 'useReducer', 'Vitest'],
+    codePublic: true,
+    links: { live: '/bike/', code: 'https://github.com/ocadge/ocadge.github.io/tree/main/src/bike' },
   },
 ]
