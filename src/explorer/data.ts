@@ -36,3 +36,37 @@ export function trendSummary(d: LifeData, sex: Sex, countries: string[]): string
   })
   return `${SEX_WORDS[sex]} life expectancy at birth, ${d.years[0]} to ${d.years.at(-1)}. Latest values: ${latest.join(', ')}.`
 }
+
+// One lollipop in the gender gap chart.
+export interface GapRow {
+  code: string
+  name: string
+  // How many more years women are expected to live than men.
+  gap: number
+}
+
+// Female minus male life expectancy for each country in `year`, largest gap first.
+// Countries missing either value are left out rather than shown as zero.
+export function genderGapRows(d: LifeData, year: string): GapRow[] {
+  const rows: GapRow[] = []
+  for (const code of Object.keys(d.countries)) {
+    const female = d.values.F[code]?.[year]
+    const male = d.values.M[code]?.[year]
+    if (female === undefined || male === undefined) continue
+    // Round to 1 decimal place: 81.6 - 73 is 8.599999999999994 in floating point.
+    rows.push({ code, name: d.countries[code] ?? code, gap: Math.round((female - male) * 10) / 10 })
+  }
+  return rows.sort((a, b) => b.gap - a.gap)
+}
+
+// A text version of the gender gap chart for screen readers: the largest, smallest and EU gaps.
+export function gapSummary(d: LifeData, year: string): string {
+  const rows = genderGapRows(d, year)
+  const largest = rows[0]
+  const smallest = rows.at(-1)
+  if (!largest || !smallest) return `No gender gap data for ${year}.`
+  const eu = rows.find((row) => row.code === 'EU27_2020')
+  const countries = rows.filter((row) => row.code !== 'EU27_2020').length
+  const euText = eu ? ` EU average: ${eu.gap} years.` : ''
+  return `Years women are expected to outlive men in ${year}, for ${countries} countries. Largest gap: ${largest.name}, ${largest.gap} years. Smallest: ${smallest.name}, ${smallest.gap} years.${euText}`
+}
