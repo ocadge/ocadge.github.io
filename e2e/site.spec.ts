@@ -101,7 +101,7 @@ test('the bike workshop blocks a step until its parts are restocked', async ({ p
     .analyze()
   expect(results.violations.map((v) => v.id)).toEqual([])
 
-  await page.getByRole('button', { name: 'Add 5 × Wheel, 29 inch' }).click()
+  await page.getByRole('button', { name: '+5 Wheel, 29 inch' }).click()
   await expect(second).not.toContainText('Blocked')
   await expect(second).toContainText('Step 3 of 7: Build the wheels.')
 })

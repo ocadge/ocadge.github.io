@@ -158,13 +158,15 @@ export default function Workshop() {
                   {qty === 0 ? ' (out)' : qty <= LOW_STOCK ? ' (low)' : ''}
                 </td>
                 <td>
+                  {/* The hidden part name starts after the visible "+5", so someone using voice
+                      control can say what they see. */}
                   <button
                     type="button"
                     className="bike-small"
-                    aria-label={`Add ${RESTOCK_BY} × ${PART_NAMES[part] ?? part}`}
                     onClick={() => dispatch({ type: 'restock', part })}
                   >
                     +{RESTOCK_BY}
+                    <span className="sr-only"> {PART_NAMES[part] ?? part}</span>
                   </button>
                 </td>
               </tr>
@@ -199,7 +201,13 @@ export default function Workshop() {
         </table>
       </div>
 
-      <button type="button" onClick={() => dispatch({ type: 'reset' })}>
+      <button
+        type="button"
+        onClick={() => {
+          dispatch({ type: 'reset' })
+          setAnnouncement('Demo started again.')
+        }}
+      >
         Start the demo again
       </button>
     </section>
