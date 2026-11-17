@@ -32,9 +32,14 @@ export default defineConfig({
   ],
   build: {
     // The portfolio, the explorer demo (so the chart library only loads for people who
-    // open it) and the 404 page GitHub Pages shows for unknown addresses.
+    // open it), the bike workshop demo and the 404 page GitHub Pages shows for unknown addresses.
     rollupOptions: {
-      input: { main: 'index.html', explorer: 'explorer/index.html', notFound: '404.html' },
+      input: {
+        main: 'index.html',
+        explorer: 'explorer/index.html',
+        bike: 'bike/index.html',
+        notFound: '404.html',
+      },
     },
   },
   test: {
