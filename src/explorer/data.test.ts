@@ -6,6 +6,8 @@ import {
   genderGapRows,
   heatmapRows,
   heatmapSummary,
+  recoveryRows,
+  recoverySummary,
   trendRows,
   trendSummary,
   type LifeData,
@@ -138,6 +140,44 @@ describe('heatmapSummary', () => {
   it('names the highest and lowest, and counts 2020 falls without the EU or incomplete countries', () => {
     expect(heatmapSummary(heatSample, 'T')).toBe(
       'Total life expectancy at birth by country, 2019 to 2021. Darker colours are higher. Highest in 2021: Spain, 83.3 years. Lowest: Bulgaria, 71.4 years. 2 of 2 countries fell in 2020 compared with 2019.',
+    )
+  })
+})
+
+// Made-up numbers covering a gain, no change (counts as recovered), a fall, an EU row that
+// mustn't count as a country, and Poland missing the latest year.
+const recoverySample: LifeData = {
+  source: 'test',
+  years: ['2019', '2024'],
+  countries: { EU27_2020: 'EU average', ES: 'Spain', DE: 'Germany', NL: 'Netherlands', PL: 'Poland' },
+  values: {
+    T: {
+      EU27_2020: { '2019': 81.1, '2024': 81.5 },
+      ES: { '2019': 83.5, '2024': 84 },
+      DE: { '2019': 81.2, '2024': 81.2 },
+      NL: { '2019': 82.1, '2024': 81.9 },
+      PL: { '2019': 77.9 },
+    },
+    M: {},
+    F: {},
+  },
+}
+
+describe('recoveryRows', () => {
+  it('pairs 2019 with the latest year, highest first, and marks zero change as recovered', () => {
+    expect(recoveryRows(recoverySample, 'T', '2019', '2024')).toEqual([
+      { code: 'ES', name: 'Spain', before: 83.5, after: 84, change: 0.5, recovered: true },
+      { code: 'NL', name: 'Netherlands', before: 82.1, after: 81.9, change: -0.2, recovered: false },
+      { code: 'EU27_2020', name: 'EU average', before: 81.1, after: 81.5, change: 0.4, recovered: true },
+      { code: 'DE', name: 'Germany', before: 81.2, after: 81.2, change: 0, recovered: true },
+    ])
+  })
+})
+
+describe('recoverySummary', () => {
+  it('counts countries without the EU, and names the ones still below', () => {
+    expect(recoverySummary(recoverySample, 'T', '2019', '2024')).toBe(
+      'Total life expectancy at birth, 2019 compared with 2024. 2 of 3 countries are back to or above their 2019 level. Still below: Netherlands, down 0.2 years. EU average: 81.1 to 81.5 years.',
     )
   })
 })

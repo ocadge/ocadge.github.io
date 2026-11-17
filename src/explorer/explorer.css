@@ -99,3 +99,85 @@
   width: 14px;
   height: 14px;
 }
+
+/* Recovery chart colours: the colour-blind-safe green and vermillion from the trend chart's palette,
+   darker in the light theme so they keep their contrast on white. */
+.explorer {
+  --recovered: #009e73;
+  --below: #d55e00;
+}
+@media (prefers-color-scheme: light) {
+  .explorer {
+    --recovered: #007a5c;
+    --below: #c2410c;
+  }
+}
+.recovery-up {
+  --dot: var(--recovered);
+}
+.recovery-down {
+  --dot: var(--below);
+}
+
+/* Recovery (dumbbell) chart: a CSS grid of rows, with markers placed by percentage along each track. */
+.recovery {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: 4px 8px;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.recovery-name {
+  white-space: nowrap;
+}
+.recovery-change {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.recovery-track {
+  position: relative;
+  height: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.recovery-line,
+.recovery-before,
+.recovery-after {
+  position: absolute;
+  top: 50%;
+}
+.recovery-line {
+  height: 2px;
+  transform: translateY(-50%);
+  background: var(--dot);
+}
+.recovery-before,
+.recovery-after {
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.recovery-before {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--muted);
+}
+.recovery-after {
+  width: 8px;
+  height: 8px;
+  background: var(--dot);
+}
+.recovery-axis {
+  position: relative;
+  height: 16px;
+  color: var(--muted);
+}
+.recovery-axis span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+/* Legend markers sit in the text flow instead of on a track. */
+.recovery-key {
+  position: static;
+  display: inline-block;
+  transform: none;
+}

@@ -129,3 +129,42 @@ export function heatmapSummary(d: LifeData, sex: Sex): string {
   }
   return `${intro} Highest in ${latest}: ${highest.name}, ${highest.v} years. Lowest: ${lowest.name}, ${lowest.v} years. ${fell} of ${compared} countries fell in 2020 compared with 2019.`
 }
+
+// One dumbbell: a country's value before the pandemic and in the latest year.
+export interface RecoveryRow {
+  code: string
+  name: string
+  before: number
+  after: number
+  // after minus before, rounded to 1 decimal place.
+  change: number
+  // Back to or above the 2019 level, as in my report. Worked out from the rounded change,
+  // so the colour and the printed number can never disagree.
+  recovered: boolean
+}
+
+// Each country's 2019 and latest values, highest latest value first. Countries missing either are left out.
+export function recoveryRows(d: LifeData, sex: Sex, from: string, to: string): RecoveryRow[] {
+  const rows: RecoveryRow[] = []
+  for (const [code, name] of Object.entries(d.countries)) {
+    const before = d.values[sex][code]?.[from]
+    const after = d.values[sex][code]?.[to]
+    if (before === undefined || after === undefined) continue
+    const change = Math.round((after - before) * 10) / 10
+    rows.push({ code, name, before, after, change, recovered: change >= 0 })
+  }
+  return rows.sort((a, b) => b.after - a.after)
+}
+
+// A text version of the recovery chart for screen readers.
+export function recoverySummary(d: LifeData, sex: Sex, from: string, to: string): string {
+  const rows = recoveryRows(d, sex, from, to)
+  const countries = rows.filter((row) => row.code !== 'EU27_2020')
+  const below = countries.filter((row) => !row.recovered)
+  const eu = rows.find((row) => row.code === 'EU27_2020')
+  const belowText = below.length
+    ? ` Still below: ${below.map((row) => `${row.name}, down ${Math.abs(row.change)} years`).join(', ')}.`
+    : ''
+  const euText = eu ? ` EU average: ${eu.before} to ${eu.after} years.` : ''
+  return `${SEX_WORDS[sex]} life expectancy at birth, ${from} compared with ${to}. ${countries.length - below.length} of ${countries.length} countries are back to or above their ${from} level.${belowText}${euText}`
+}
