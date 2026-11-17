@@ -38,7 +38,8 @@ export default function TrendChart({ sex, countries }: Props) {
           <XAxis dataKey="year" stroke={theme.axis} />
           <YAxis domain={['auto', 'auto']} stroke={theme.axis} />
           <Tooltip contentStyle={{ background: theme.panel, border: `1px solid ${theme.grid}` }} />
-          <Legend />
+          {/* null keeps the drawing order (EU average first); Recharts 3 sorts names alphabetically by default. */}
+          <Legend itemSorter={null} />
           <Line dataKey="EU27_2020" name="EU average" stroke={theme.eu} strokeWidth={3} dot={false} />
           {countries.map((code, i) => (
             <Line
