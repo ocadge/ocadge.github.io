@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest'
-import { data, gapSummary, genderGapRows, trendRows, trendSummary, type LifeData } from './data.ts'
+import {
+  colourBand,
+  data,
+  gapSummary,
+  genderGapRows,
+  heatmapRows,
+  heatmapSummary,
+  trendRows,
+  trendSummary,
+  type LifeData,
+} from './data.ts'
 
 const sample: LifeData = {
   source: 'test',
@@ -82,5 +92,52 @@ describe('gapSummary', () => {
 
   it('says when there is no data for the year', () => {
     expect(gapSummary(gapSample, '1999')).toBe('No gender gap data for 1999.')
+  })
+})
+
+// Made-up numbers with the awkward cases built in: an EU row that mustn't count as a country,
+// Croatia missing 2019, and Latvia missing the latest year.
+const heatSample: LifeData = {
+  source: 'test',
+  years: ['2019', '2020', '2021'],
+  countries: { EU27_2020: 'EU average', ES: 'Spain', BG: 'Bulgaria', HR: 'Croatia', LV: 'Latvia' },
+  values: {
+    T: {
+      EU27_2020: { '2019': 81.3, '2020': 80.4, '2021': 80.1 },
+      ES: { '2019': 84, '2020': 82.4, '2021': 83.3 },
+      BG: { '2019': 75.1, '2020': 73.6, '2021': 71.4 },
+      HR: { '2020': 77.8, '2021': 76.7 },
+      LV: { '2019': 75.5 },
+    },
+    M: {},
+    F: {},
+  },
+}
+
+describe('heatmapRows', () => {
+  it('lines up each country with the years, sorted by the latest value, missing latest last', () => {
+    const rows = heatmapRows(heatSample, 'T')
+    expect(rows.map((row) => row.code)).toEqual(['ES', 'EU27_2020', 'HR', 'BG', 'LV'])
+    expect(rows[2]).toEqual({ code: 'HR', name: 'Croatia', values: [undefined, 77.8, 76.7] })
+  })
+})
+
+describe('colourBand', () => {
+  it('puts the lowest value in band 0 and the highest in the top band', () => {
+    expect(colourBand(70, 70, 80, 9)).toBe(0)
+    expect(colourBand(80, 70, 80, 9)).toBe(8)
+    expect(colourBand(75, 70, 80, 9)).toBe(4)
+  })
+
+  it('copes with a range of zero', () => {
+    expect(colourBand(70, 70, 70, 9)).toBe(0)
+  })
+})
+
+describe('heatmapSummary', () => {
+  it('names the highest and lowest, and counts 2020 falls without the EU or incomplete countries', () => {
+    expect(heatmapSummary(heatSample, 'T')).toBe(
+      'Total life expectancy at birth by country, 2019 to 2021. Darker colours are higher. Highest in 2021: Spain, 83.3 years. Lowest: Bulgaria, 71.4 years. 2 of 2 countries fell in 2020 compared with 2019.',
+    )
   })
 })

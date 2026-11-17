@@ -70,3 +70,62 @@ export function gapSummary(d: LifeData, year: string): string {
   const euText = eu ? ` EU average: ${eu.gap} years.` : ''
   return `Years women are expected to outlive men in ${year}, for ${countries} countries. Largest gap: ${largest.name}, ${largest.gap} years. Smallest: ${smallest.name}, ${smallest.gap} years.${euText}`
 }
+
+// One row of the heatmap: a country and its value for every year (undefined where Eurostat has none).
+export interface HeatRow {
+  code: string
+  name: string
+  values: (number | undefined)[]
+}
+
+// Every country's values in year order, sorted by the latest year (highest first), as in my report.
+export function heatmapRows(d: LifeData, sex: Sex): HeatRow[] {
+  const latest = d.years.at(-1) ?? ''
+  const rows = Object.entries(d.countries).map(([code, name]) => ({
+    code,
+    name,
+    values: d.years.map((year) => d.values[sex][code]?.[year]),
+  }))
+  // A country with no latest value sorts last (-Infinity is below every number).
+  const last = (row: HeatRow) => d.values[sex][row.code]?.[latest] ?? -Infinity
+  return rows.sort((a, b) => last(b) - last(a))
+}
+
+// Which of `steps` colour bands a value falls in: 0 for the lowest band, steps - 1 for the highest.
+export function colourBand(value: number, min: number, max: number, steps: number): number {
+  if (max === min) return 0
+  const band = Math.floor(((value - min) / (max - min)) * steps)
+  // The maximum itself would land one past the end, so clamp it into the top band.
+  return Math.min(steps - 1, Math.max(0, band))
+}
+
+// A text version of the heatmap for screen readers: the latest highest and lowest, and the 2020 drop.
+export function heatmapSummary(d: LifeData, sex: Sex): string {
+  const latest = d.years.at(-1) ?? ''
+  const value = (code: string, year: string) => d.values[sex][code]?.[year]
+  const intro = `${SEX_WORDS[sex]} life expectancy at birth by country, ${d.years[0]} to ${latest}. Darker colours are higher.`
+
+  // Real countries only: the EU average isn't counted as one.
+  const countries = Object.keys(d.countries).filter((code) => code !== 'EU27_2020')
+  const ranked = countries
+    .flatMap((code) => {
+      const v = value(code, latest)
+      return v === undefined ? [] : [{ name: d.countries[code] ?? code, v }]
+    })
+    .sort((a, b) => b.v - a.v)
+  const highest = ranked[0]
+  const lowest = ranked.at(-1)
+  if (!highest || !lowest) return intro
+
+  // Only countries with both years can be compared.
+  let compared = 0
+  let fell = 0
+  for (const code of countries) {
+    const before = value(code, '2019')
+    const after = value(code, '2020')
+    if (before === undefined || after === undefined) continue
+    compared++
+    if (after < before) fell++
+  }
+  return `${intro} Highest in ${latest}: ${highest.name}, ${highest.v} years. Lowest: ${lowest.name}, ${lowest.v} years. ${fell} of ${compared} countries fell in 2020 compared with 2019.`
+}

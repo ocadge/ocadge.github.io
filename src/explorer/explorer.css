@@ -46,3 +46,56 @@
   border-color: var(--accent);
   color: var(--accent);
 }
+
+/* Heatmap: a CSS grid of coloured cells, so the text stays full size at any width. */
+.heatmap {
+  display: grid;
+  gap: 1px;
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 14px;
+}
+.heatmap-name {
+  padding-right: 8px;
+  white-space: nowrap;
+}
+.heatmap-eu {
+  font-weight: 700;
+  color: var(--heading);
+}
+.heatmap-year {
+  height: 18px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.heatmap-cell {
+  height: 14px;
+}
+/* Missing values get their own look, so they can't be mistaken for the light end of the scale. */
+.heatmap-missing {
+  border: 1px dashed var(--muted);
+}
+/* A black and a white stripe, so the 2020 line shows on every colour in the scale, in both themes. */
+.heatmap-2020 {
+  box-shadow:
+    inset 1px 0 0 #000,
+    inset 3px 0 0 #fff;
+}
+.heatmap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.heatmap-scale {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.heatmap-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
