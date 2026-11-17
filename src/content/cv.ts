@@ -26,7 +26,7 @@ export const about = {
   headline: 'Early-career developer with studio experience',
   paragraphs: [
     'I’m an early-career developer from the North East. I spent a year as a Games Programming Intern at Tanglewood Games, an independent games studio, working in a small team on a client prototype in Unreal Engine 5, then studied Computer Science at Northumbria University, where I earned a Certificate of Higher Education in Computing with Commendation.',
-    'Python is my strongest language. At university I built object-oriented desktop apps in PySide6, a REST API in PHP and data visualisation reports with pandas and seaborn. Right now I’m building this site in React and TypeScript, and I’m enrolled on an AI Essentials Bootcamp.',
+    'Python is my strongest language. At university I built object-oriented desktop apps in PySide6, a REST API in PHP and data visualisation reports with pandas and seaborn. I rebuilt this site in React and TypeScript using Claude Code, and I’m enrolled on an AI Essentials Bootcamp.',
   ],
   facts: [
     { label: 'location', value: 'North East England' },
