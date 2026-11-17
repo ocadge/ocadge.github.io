@@ -41,8 +41,9 @@ export default function RecoveryChart() {
             </span>
             {/* The number says the same as the colour, so the chart doesn't rely on colour alone. */}
             <span className="recovery-change">
-              {row.change > 0 ? '+' : ''}
-              {row.change}
+              {/* A real minus sign (−), which lines up with + better than a hyphen does. */}
+              {row.change > 0 ? '+' : row.change < 0 ? '−' : ''}
+              {Math.abs(row.change)}
             </span>
           </Fragment>
         ))}
