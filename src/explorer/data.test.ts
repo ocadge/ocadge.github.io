@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { data, genderGapRows, trendRows, trendSummary, type LifeData } from './data.ts'
+import { data, gapSummary, genderGapRows, trendRows, trendSummary, type LifeData } from './data.ts'
 
 const sample: LifeData = {
   source: 'test',
@@ -64,5 +64,21 @@ describe('genderGapRows', () => {
       { code: 'LT', name: 'Lithuania', gap: 8.6 },
       { code: 'DE', name: 'Germany', gap: 4.7 },
     ])
+  })
+})
+
+describe('gapSummary', () => {
+  it('names the largest and smallest gaps', () => {
+    expect(gapSummary(gapSample, '2024')).toBe(
+      'Years women are expected to outlive men in 2024, for 2 countries. Largest gap: Lithuania, 8.6 years. Smallest: Germany, 4.7 years.',
+    )
+  })
+
+  it('adds the EU average when it is in the data', () => {
+    expect(gapSummary(data, '2024')).toMatch(/EU average: [\d.]+ years\.$/)
+  })
+
+  it('says when there is no data for the year', () => {
+    expect(gapSummary(gapSample, '1999')).toBe('No gender gap data for 1999.')
   })
 })

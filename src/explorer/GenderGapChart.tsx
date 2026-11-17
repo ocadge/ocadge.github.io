@@ -1,5 +1,5 @@
 import { Bar, BarChart, CartesianGrid, LabelList, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { data, genderGapRows, type GapRow } from './data.ts'
+import { data, gapSummary, genderGapRows, type GapRow } from './data.ts'
 import { token, useDarkMode } from './useDarkMode.ts'
 
 // The newest year in the saved data. `?? ''` covers an empty list, which TypeScript can't rule out.
@@ -41,7 +41,7 @@ export default function GenderGapChart() {
   const rows = genderGapRows(data, YEAR)
 
   return (
-    <div role="img" aria-label="Gender gap chart">
+    <div role="img" aria-label={gapSummary(data, YEAR)}>
       {/* About 24px per country, plus room for the axis. */}
       <ResponsiveContainer width="100%" height={rows.length * 24 + 40}>
         <BarChart data={rows} layout="vertical" margin={{ top: 8, right: 32, bottom: 0, left: 0 }}>

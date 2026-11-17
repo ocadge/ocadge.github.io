@@ -58,3 +58,14 @@ export function genderGapRows(d: LifeData, year: string): GapRow[] {
   }
   return rows.sort((a, b) => b.gap - a.gap)
 }
+
+// A text version of the gender gap chart for screen readers: the largest, smallest and EU gaps.
+export function gapSummary(d: LifeData, year: string): string {
+  const rows = genderGapRows(d, year)
+  const largest = rows[0]
+  const smallest = rows.at(-1)
+  if (!largest || !smallest) return `No gender gap data for ${year}.`
+  const eu = rows.find((row) => row.code === 'EU27_2020')
+  const euText = eu ? ` EU average: ${eu.gap} years.` : ''
+  return `Years women are expected to outlive men in ${year}, for ${rows.length} countries. Largest gap: ${largest.name}, ${largest.gap} years. Smallest: ${smallest.name}, ${smallest.gap} years.${euText}`
+}
