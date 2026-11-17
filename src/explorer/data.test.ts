@@ -74,8 +74,10 @@ describe('gapSummary', () => {
     )
   })
 
-  it('adds the EU average when it is in the data', () => {
-    expect(gapSummary(data, '2024')).toMatch(/EU average: [\d.]+ years\.$/)
+  it('adds the EU average without counting it as a country', () => {
+    const summary = gapSummary(data, '2024')
+    expect(summary).toContain('for 27 countries')
+    expect(summary).toMatch(/EU average: [\d.]+ years\.$/)
   })
 
   it('says when there is no data for the year', () => {

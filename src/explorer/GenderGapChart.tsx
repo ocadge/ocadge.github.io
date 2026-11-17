@@ -35,6 +35,7 @@ export default function GenderGapChart() {
     grid: token('--border'),
     axis: token('--muted'),
     panel: token('--panel'),
+    text: token('--text'),
     // Same blue as the trend chart's second series; the EU average stands out like its EU line.
     colours: { bar: dark ? '#56B4E9' : '#0072B2', eu: token('--heading') },
   }
@@ -52,6 +53,8 @@ export default function GenderGapChart() {
           <Tooltip
             cursor={{ fill: theme.grid }}
             contentStyle={{ background: theme.panel, border: `1px solid ${theme.grid}` }}
+            // Without this the value line is black, because the custom lollipop shape has no single fill colour.
+            itemStyle={{ color: theme.text }}
           />
           <Bar dataKey="gap" name="Years women outlive men" shape={<Lollipop colours={theme.colours} />}>
             {/* Prints each value beside its dot, so it can be read without hovering. */}

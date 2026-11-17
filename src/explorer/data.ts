@@ -66,6 +66,7 @@ export function gapSummary(d: LifeData, year: string): string {
   const smallest = rows.at(-1)
   if (!largest || !smallest) return `No gender gap data for ${year}.`
   const eu = rows.find((row) => row.code === 'EU27_2020')
+  const countries = rows.filter((row) => row.code !== 'EU27_2020').length
   const euText = eu ? ` EU average: ${eu.gap} years.` : ''
-  return `Years women are expected to outlive men in ${year}, for ${rows.length} countries. Largest gap: ${largest.name}, ${largest.gap} years. Smallest: ${smallest.name}, ${smallest.gap} years.${euText}`
+  return `Years women are expected to outlive men in ${year}, for ${countries} countries. Largest gap: ${largest.name}, ${largest.gap} years. Smallest: ${smallest.name}, ${smallest.gap} years.${euText}`
 }
