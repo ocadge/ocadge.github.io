@@ -201,7 +201,7 @@ export const projects: Project[] = [
     summary:
       'Interactive charts of life expectancy across all 27 EU countries, 2000 to 2024, using Eurostat data.',
     built:
-      'A React and TypeScript page built on Eurostat data. You can switch between men, women and total, and pick countries to compare against the EU average. The trend chart is live; gender gap, heatmap and recovery charts are next.',
+      'A React and TypeScript page built on Eurostat data. You can switch between men, women and total, and pick countries to compare against the EU average. The trend and gender gap charts are live; a heatmap and a recovery chart are next.',
     learned:
       'Building with React and TypeScript, and keeping charts accessible with text summaries and colours that work in both light and dark mode.',
     tags: ['React', 'TypeScript', 'Recharts', 'Eurostat data'],
